@@ -1,25 +1,5 @@
 
-/* Restante do seu código CSS (mantido como está) */
-/* From Uiverse.io by fanishah */ 
-/* Estilos para o ícone de carregamento */
-.loading-container {
-    display: none;  /* Inicialmente escondido */
-    text-align: center;
-    margin-top: 20px;
-}
 
-#confirmationMessage {
-    display: none;
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Restante do seu código CSS (mantido como está) */
-
-.loader {
-  width: 8em;
-  height: 8em;
-}
 
 .loader__eye1,
   .loader__eye2,
