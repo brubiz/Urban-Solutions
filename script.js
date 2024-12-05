@@ -1,45 +1,42 @@
-// script.js
 document.addEventListener("DOMContentLoaded", () => {
-    // Inicializando o mapa com Leaflet
-    const map = L.map('map').setView([-23.5505, -46.6333], 13); // Coordenadas de São Paulo
+    const neighborhoodSelect = document.getElementById("neighborhood");
+    const streetSelect = document.getElementById("street");
+    const loadingContainer = document.getElementById("loadingContainer");
+    const loadingMessage = document.getElementById("loadingMessage");
 
-    // Adicionando tiles do OpenStreetMap
+    // Inicializando o mapa
+    const map = L.map('map').setView([-23.5505, -46.6333], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    let selectedVehicle = null;
+    // Mapeamento de bairros e ruas
+    const neighborhoods = {
+        "Centro": ["Rua São Bento", "Rua XV de Novembro", "Rua Direita"],
+        "Vila Galvão": ["Avenida Emílio Ribas", "Rua Treze de Maio", "Rua São José"],
+        "Bonsucesso": ["Avenida Paschoal Thomeu", "Rua Nossa Senhora do Bonsucesso", "Rua Coronel Estanislau"],
+        "Ponte Grande": ["Rua José Brumatti", "Rua Itapegica", "Rua Santa Catarina"]
+    };
 
-    const carOption = document.getElementById("carOption");
-    const bikeOption = document.getElementById("bikeOption");
+    // Atualizar ruas com base no bairro selecionado
+    neighborhoodSelect.addEventListener("change", () => {
+        const selectedNeighborhood = neighborhoodSelect.value;
 
-    carOption.addEventListener("click", () => {
-        selectedVehicle = "Carro";
-        carOption.style.backgroundColor = "#3b82f6";
-        carOption.style.color = "#fff";
-        bikeOption.style.backgroundColor = "";
-        bikeOption.style.color = "";
-    });
+        // Limpar ruas anteriores
+        streetSelect.innerHTML = '<option value="">Escolha uma rua</option>';
 
-    bikeOption.addEventListener("click", () => {
-        selectedVehicle = "Moto";
-        bikeOption.style.backgroundColor = "#3b82f6";
-        bikeOption.style.color = "#fff";
-        carOption.style.backgroundColor = "";
-        carOption.style.color = "";
-    });
-
-    document.getElementById("rideForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const pickup = document.getElementById("pickup").value;
-        const destination = document.getElementById("destination").value;
-
-        if (!pickup || !destination || !selectedVehicle) {
-            alert("Por favor, preencha todos os campos e escolha um tipo de veículo!");
-            return;
+        if (selectedNeighborhood && neighborhoods[selectedNeighborhood]) {
+            neighborhoods[selectedNeighborhood].forEach(street => {
+                const option = document.createElement("option");
+                option.value = street;
+                option.textContent = street;
+                streetSelect.appendChild(option);
+            });
+            streetSelect.disabled = false;
+        } else {
+            streetSelect.disabled = true;
         }
-
-        alert(`Corrida solicitada!\nDe: ${pickup}\nPara: ${destination}\nVeículo: ${selectedVehicle}`);
     });
-});
+
+    // Seleção de veículo
+   
