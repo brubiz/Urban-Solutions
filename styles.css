@@ -32,6 +32,17 @@ main {
 
 .map-container {
     flex: 2;
+    width: 100%;
+    max-width: 600px;
+    height: 400px; /* Altura do mapa */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+
+.map-container {
+    flex: 2;
     background-color: #212845;
     width: 100%;
     max-width: 600px;
