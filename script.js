@@ -51,3 +51,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 5000); // 5000ms = 5 segundos
     });
 });
+
+backgroundColor = "#3b82f6";
+        bikeOption.style.color = "#fff";
+        carOption.style.backgroundColor = "";
+        carOption.style.color = "";
+    });
+
+    document.getElementById("rideForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const pickup = document.getElementById("pickup").value;
+        const destination = document.getElementById("destination").value;
+
+        if (!pickup || !destination || !selectedVehicle) {
+            alert("Por favor, preencha todos os campos e escolha um tipo de veículo!");
+            return;
+        }
+
+        // Exibe o ícone de carregamento
+        loadingContainer.style.display = "block";
+        confirmationMessage.style.display = "none"; // Esconde a mensagem de confirmação enquanto aguarda
+
+        // Após 5 segundos, exibe a mensagem de confirmação
+        setTimeout(() => {
+            loadingContainer.style.display = "none"; // Esconde o carregamento
+            confirmationMessage.style.display = "block"; // Exibe a mensagem de confirmação
+        }, 5000); // 5000ms = 5 segundos
+    });
+});
