@@ -1,3 +1,19 @@
+/* Estilos para o ícone de carregamento */
+.loading-container {
+    display: none;  /* Inicialmente escondido */
+    text-align: center;
+    margin-top: 20px;
+}
+
+#confirmationMessage {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Restante do seu código CSS (mantido como está) */
+
+
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
