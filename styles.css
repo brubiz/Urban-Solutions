@@ -1,24 +1,3 @@
-header {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    background-color: #1c2233;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.logo-title {
-    display: flex;
-    align-items: center; /* Centraliza verticalmente a imagem e o texto */
-    gap: 15px; /* Espaço entre a imagem e o título */
-}
-
-.logo {
-    width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
-    height: 50px;
-    border-radius: 50%; /* Se quiser que a imagem seja redonda */
-}
 
 .fade-in-title {
     opacity: 0;
