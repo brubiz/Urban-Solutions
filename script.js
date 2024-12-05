@@ -1,4 +1,3 @@
-// script.js
 document.addEventListener("DOMContentLoaded", () => {
     // Inicializando o mapa com Leaflet
     const map = L.map('map').setView([-23.5505, -46.6333], 13); // Coordenadas de São Paulo
@@ -9,9 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }).addTo(map);
 
     let selectedVehicle = null;
-
     const carOption = document.getElementById("carOption");
     const bikeOption = document.getElementById("bikeOption");
+    const loadingContainer = document.getElementById("loading");
+    const confirmationMessage = document.getElementById("confirmationMessage");
 
     carOption.addEventListener("click", () => {
         selectedVehicle = "Carro";
@@ -40,6 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        alert(`Corrida solicitada!\nDe: ${pickup}\nPara: ${destination}\nVeículo: ${selectedVehicle}`);
+        // Exibe o ícone de carregamento
+        loadingContainer.style.display = "block";
+        confirmationMessage.style.display = "none"; // Esconde a mensagem de confirmação enquanto aguarda
+
+        // Após 5 segundos, exibe a mensagem de confirmação
+        setTimeout(() => {
+            loadingContainer.style.display = "none"; // Esconde o carregamento
+            confirmationMessage.style.display = "block"; // Exibe a mensagem de confirmação
+        }, 5000); // 5000ms = 5 segundos
     });
 });
