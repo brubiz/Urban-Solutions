@@ -2,8 +2,8 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #1b1f3b; /* Azul escuro */
-    color: #ffffff; /* Texto branco */
+    background-color: #121826; /* Azul escuro */
+    color: #ffffff;
 }
 
 .app-container {
@@ -13,12 +13,13 @@ body {
 }
 
 header {
-    background-color: #283048; /* Azul escuro mais claro */
+    background-color: #1c2233; /* Azul mais claro */
     padding: 15px;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    color: #3b82f6;
 }
 
 main {
@@ -41,6 +42,7 @@ main {
     align-items: center;
     margin-bottom: 20px;
     color: #888;
+    font-size: 1.2em;
 }
 
 .ride-options {
@@ -53,20 +55,50 @@ main {
 .ride-options form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
-.ride-options input,
-.ride-options select {
+.ride-options input {
     padding: 10px;
     font-size: 1em;
     border-radius: 5px;
-    border: none;
+    border: 1px solid #555;
     outline: none;
+    background-color: #1c2233;
+    color: #ffffff;
 }
 
-.ride-options button {
-    background-color: #3b82f6; /* Azul vibrante */
+.vehicle-selection {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.vehicle-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #1c2233;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vehicle-option i {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+.vehicle-option:hover {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border-color: #3b82f6;
+}
+
+button {
+    background-color: #3b82f6;
     color: #fff;
     padding: 10px;
     font-size: 1.2em;
@@ -76,6 +108,6 @@ main {
     transition: background-color 0.3s ease;
 }
 
-.ride-options button:hover {
-    background-color: #2563eb; /* Azul mais escuro */
+button:hover {
+    background-color: #2563eb;
 }
