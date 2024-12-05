@@ -34,11 +34,13 @@ main {
     flex: 2;
     width: 100%;
     max-width: 600px;
-    height: 300px;
+    height: 400px; /* Altura do mapa */
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;
 }
+
+
 
 .ride-options {
     flex: 1;
