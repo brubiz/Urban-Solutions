@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #121826; /* Azul escuro */
+    background-color: #121826;
     color: #ffffff;
 }
 
@@ -13,13 +13,13 @@ body {
 }
 
 header {
-    background-color: #1c2233; /* Azul mais claro */
+    background-color: #1c2233;
     padding: 15px;
     text-align: center;
     font-size: 1.8em;
     font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     color: #3b82f6;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 main {
@@ -34,26 +34,10 @@ main {
     flex: 2;
     width: 100%;
     max-width: 600px;
-    height: 400px; /* Altura do mapa */
+    height: 300px;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;
-}
-
-
-.map-container {
-    flex: 2;
-    background-color: #212845;
-    width: 100%;
-    max-width: 600px;
-    height: 300px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    color: #888;
-    font-size: 1.2em;
 }
 
 .ride-options {
@@ -104,7 +88,7 @@ main {
 
 .vehicle-option:hover {
     background-color: #3b82f6;
-    color: #ffffff;
+    color: #fff;
     border-color: #3b82f6;
 }
 
