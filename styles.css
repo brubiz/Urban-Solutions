@@ -46,7 +46,7 @@ main {
     flex: 2;
     width: 100%;
     max-width: 600px;
-    height: 400px; /* Altura do mapa */
+    height: 900px; /* Altura do mapa */
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;
