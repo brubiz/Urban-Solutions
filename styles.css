@@ -1,135 +1,4 @@
-
-
-
-.loader__eye1,
-  .loader__eye2,
-  .loader__mouth1,
-  .loader__mouth2 {
-  animation: eye1 3s ease-in-out infinite;
-}
-
-.loader__eye1,
-  .loader__eye2 {
-  transform-origin: 64px 64px;
-}
-
-.loader__eye2 {
-  animation-name: eye2;
-}
-
-.loader__mouth1 {
-  animation-name: mouth1;
-}
-
-.loader__mouth2 {
-  animation-name: mouth2;
-  visibility: hidden;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: hsl(var(--hue), 90%, 10%);
-    --fg: hsl(var(--hue), 90%, 90%);
-  }
-}
-
-@keyframes eye1 {
-  from {
-    transform: rotate(-260deg) translate(0, -56px);
-  }
-
-  50%,
-    60% {
-    animation-timing-function: cubic-bezier(0.17, 0, 0.58, 1);
-    transform: rotate(-40deg) translate(0, -56px) scale(1);
-  }
-
-  to {
-    transform: rotate(225deg) translate(0, -56px) scale(0.35);
-  }
-}
-
-@keyframes eye2 {
-  from {
-    transform: rotate(-260deg) translate(0, -56px);
-  }
-
-  50% {
-    transform: rotate(40deg) translate(0, -56px) rotate(-40deg) scale(1);
-  }
-
-  52.5% {
-    transform: rotate(40deg) translate(0, -56px) rotate(-40deg) scale(1, 0);
-  }
-
-  55%,
-    70% {
-    animation-timing-function: cubic-bezier(0, 0, 0.28, 1);
-    transform: rotate(40deg) translate(0, -56px) rotate(-40deg) scale(1);
-  }
-
-  to {
-    transform: rotate(150deg) translate(0, -56px) scale(0.4);
-  }
-}
-
-@keyframes eyeBlink {
-  from,
-    25%,
-    75%,
-    to {
-    transform: scaleY(1);
-  }
-
-  50% {
-    transform: scaleY(0);
-  }
-}
-
-@keyframes mouth1 {
-  from {
-    animation-timing-function: ease-in;
-    stroke-dasharray: 0 351.86;
-    stroke-dashoffset: 0;
-  }
-
-  25% {
-    animation-timing-function: ease-out;
-    stroke-dasharray: 175.93 351.86;
-    stroke-dashoffset: 0;
-  }
-
-  50% {
-    animation-timing-function: steps(1, start);
-    stroke-dasharray: 175.93 351.86;
-    stroke-dashoffset: -175.93;
-    visibility: visible;
-  }
-
-  75%,
-    to {
-    visibility: hidden;
-  }
-}
-
-@keyframes mouth2 {
-  from {
-    animation-timing-function: steps(1, end);
-    visibility: hidden;
-  }
-
-  50% {
-    animation-timing-function: ease-in-out;
-    visibility: visible;
-    stroke-dashoffset: 0;
-  }
-
-  to {
-    stroke-dashoffset: -351.86;
-  }
-}
-
-
+/* Estilos para o mapa e outros elementos */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -152,28 +21,8 @@ header {
     color: #3b82f6;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
-.loading-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-    font-size: 1.2em;
-    z-index: 1000;
-}
 
-.loading-icon {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-main {
+.main {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -184,8 +33,7 @@ main {
 .map-container {
     flex: 2;
     width: 100%;
-    max-width: 600px;
-    height: 900px;
+    height: 400px;  /* Corrigido para visibilidade do mapa */
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;
@@ -196,12 +44,22 @@ main {
     max-width: 400px;
     width: 100%;
     text-align: center;
+    margin: 0 auto; /* Alinha o conteúdo ao centro */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adiciona espaço entre os elementos */
+    align-items: center; /* Alinha os itens ao centro */
+}
+
+.ride-options h2 {
+    margin-bottom: 20px; /* Espaço entre o título e o formulário */
 }
 
 .ride-options form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 100%; /* Garante que o formulário ocupe a largura disponível */
 }
 
 .ride-options input {
@@ -212,12 +70,14 @@ main {
     outline: none;
     background-color: #1c2233;
     color: #ffffff;
+    width: 100%; /* Garante que os inputs ocupem a largura do formulário */
 }
 
 .vehicle-selection {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    width: 100%; /* Garante que a seleção de veículos ocupe toda a largura */
 }
 
 .vehicle-option {
@@ -230,6 +90,7 @@ main {
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .vehicle-option i {
@@ -252,14 +113,16 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 100%; /* Garante que o botão ocupe toda a largura */
 }
 
 button:hover {
     background-color: #2563eb;
 }
-/* Estilos para o ícone de carregamento */
+
+
 .loading-container {
-    display: none;  /* Inicialmente escondido */
+    display: none;
     text-align: center;
     margin-top: 20px;
 }
@@ -269,6 +132,3 @@ button:hover {
     text-align: center;
     margin-top: 20px;
 }
-
-/* Restante do seu código CSS (mantido como está) */
-
