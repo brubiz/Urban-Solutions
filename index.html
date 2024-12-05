@@ -5,31 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Urban Solutions</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
         <header>
-            <h1>Urban Solutions</h1>
+            <h1><i class="fas fa-car"></i> Urban Solutions</h1>
         </header>
         <main>
             <div class="map-container">
-                <p>Mapa interativo aqui (placeholder).</p>
+                <p>Mapa Interativo Aqui (Placeholder)</p>
             </div>
             <div class="ride-options">
-                <h2>Solicite sua corrida</h2>
+                <h2>Escolha sua Corrida</h2>
                 <form id="rideForm">
                     <label for="pickup">Ponto de Partida:</label>
                     <input type="text" id="pickup" placeholder="Digite o endereço">
-                    
+
                     <label for="destination">Destino:</label>
                     <input type="text" id="destination" placeholder="Digite o endereço">
 
-                    <label for="carType">Tipo de Veículo:</label>
-                    <select id="carType">
-                        <option value="standard">Standard</option>
-                        <option value="premium">Premium</option>
-                        <option value="bike">Bike</option>
-                    </select>
+                    <div class="vehicle-selection">
+                        <h3>Tipo de Veículo</h3>
+                        <div class="vehicle-option" id="carOption">
+                            <i class="fas fa-car"></i>
+                            <span>Carro</span>
+                        </div>
+                        <div class="vehicle-option" id="bikeOption">
+                            <i class="fas fa-motorcycle"></i>
+                            <span>Moto</span>
+                        </div>
+                    </div>
 
                     <button type="submit">Solicitar Corrida</button>
                 </form>
