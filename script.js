@@ -1,5 +1,13 @@
 // script.js
 document.addEventListener("DOMContentLoaded", () => {
+    // Inicializando o mapa com Leaflet
+    const map = L.map('map').setView([-23.5505, -46.6333], 13); // Coordenadas de São Paulo
+
+    // Adicionando tiles do OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
     let selectedVehicle = null;
 
     const carOption = document.getElementById("carOption");
