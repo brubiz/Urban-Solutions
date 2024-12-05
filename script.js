@@ -1,17 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Inicializando o mapa com Leaflet
-    const map = L.map('map').setView([-23.5505, -46.6333], 13); // Coordenadas de São Paulo
+    // Inicializando o mapa
+    const map = L.map('map').setView([-23.5505, -46.6333], 13);
 
     // Adicionando tiles do OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    let selectedVehicle = null;
+    // Mapeamento de bairros e ruas
+    const neighborhoods = {
+        "Centro": ["Rua São Bento", "Rua XV de Novembro", "Rua Direita"],
+        "Vila Galvão": ["Avenida Emílio Ribas", "Rua Treze de Maio", "Rua São José"],
+        "Bonsucesso": ["Avenida Paschoal Thomeu", "Rua Nossa Senhora do Bonsucesso", "Rua Coronel Estanislau"],
+        "Ponte Grande": ["Rua José Brumatti", "Rua Itapegica", "Rua Santa Catarina"]
+    };
+
+    // Capturando elementos da interface
+    const neighborhoodSelect = document.getElementById("neighborhood");
+    const streetSelect = document.getElementById("street");
+
+    // Atualizar ruas com base no bairro selecionado
+    neighborhoodSelect.addEventListener("change", () => {
+        const selectedNeighborhood = neighborhoodSelect.value;
+
+        // Limpar ruas anteriores
+        streetSelect.innerHTML = '<option value="">Escolha uma rua</option>';
+
+        if (selectedNeighborhood && neighborhoods[selectedNeighborhood]) {
+            // Preencher ruas do bairro selecionado
+            neighborhoods[selectedNeighborhood].forEach(street => {
+                const option = document.createElement("option");
+                option.value = street;
+                option.textContent = street;
+                streetSelect.appendChild(option);
+            });
+            streetSelect.disabled = false; // Ativar o campo
+        } else {
+            streetSelect.disabled = true; // Desativar se nenhum bairro for escolhido
+        }
+    });
+
+    // Lógica de seleção de veículos
     const carOption = document.getElementById("carOption");
     const bikeOption = document.getElementById("bikeOption");
-    const loadingContainer = document.getElementById("loading");
-    const confirmationMessage = document.getElementById("confirmationMessage");
+    let selectedVehicle = null;
 
     carOption.addEventListener("click", () => {
         selectedVehicle = "Carro";
@@ -29,54 +61,23 @@ document.addEventListener("DOMContentLoaded", () => {
         carOption.style.color = "";
     });
 
+    // Submissão do formulário
     document.getElementById("rideForm").addEventListener("submit", (e) => {
         e.preventDefault();
 
         const pickup = document.getElementById("pickup").value;
         const destination = document.getElementById("destination").value;
+        const neighborhood = neighborhoodSelect.value;
+        const street = streetSelect.value;
 
-        if (!pickup || !destination || !selectedVehicle) {
+        if (!pickup || !destination || !neighborhood || !street || !selectedVehicle) {
             alert("Por favor, preencha todos os campos e escolha um tipo de veículo!");
             return;
         }
 
-        // Exibe o ícone de carregamento
-        loadingContainer.style.display = "block";
-        confirmationMessage.style.display = "none"; // Esconde a mensagem de confirmação enquanto aguarda
-
-        // Após 5 segundos, exibe a mensagem de confirmação
-        setTimeout(() => {
-            loadingContainer.style.display = "none"; // Esconde o carregamento
-            confirmationMessage.style.display = "block"; // Exibe a mensagem de confirmação
-        }, 5000); // 5000ms = 5 segundos
-    });
-});
-
-backgroundColor = "#3b82f6";
-        bikeOption.style.color = "#fff";
-        carOption.style.backgroundColor = "";
-        carOption.style.color = "";
-    });
-
-    document.getElementById("rideForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const pickup = document.getElementById("pickup").value;
-        const destination = document.getElementById("destination").value;
-
-        if (!pickup || !destination || !selectedVehicle) {
-            alert("Por favor, preencha todos os campos e escolha um tipo de veículo!");
-            return;
-        }
-
-        // Exibe o ícone de carregamento
-        loadingContainer.style.display = "block";
-        confirmationMessage.style.display = "none"; // Esconde a mensagem de confirmação enquanto aguarda
-
-        // Após 5 segundos, exibe a mensagem de confirmação
-        setTimeout(() => {
-            loadingContainer.style.display = "none"; // Esconde o carregamento
-            confirmationMessage.style.display = "block"; // Exibe a mensagem de confirmação
-        }, 5000); // 5000ms = 5 segundos
+        alert(`Corrida solicitada!
+        De: ${pickup} (${street}, ${neighborhood})
+        Para: ${destination}
+        Veículo: ${selectedVehicle}`);
     });
 });
