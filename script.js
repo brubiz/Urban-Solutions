@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadingContainer = document.getElementById("loading");
     const confirmationMessage = document.getElementById("confirmationMessage");
 
-    // Seleção de veículo
     carOption.addEventListener("click", () => {
         selectedVehicle = "Carro";
         carOption.style.backgroundColor = "#3b82f6";
@@ -30,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
         carOption.style.color = "";
     });
 
-    // Envio do formulário
     document.getElementById("rideForm").addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -42,14 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Exibe o loader
-        loadingContainer.style.display = "flex";
+        // Exibe o ícone de carregamento
+        loadingContainer.style.display = "block";
+        confirmationMessage.style.display = "none"; // Esconde a mensagem de confirmação enquanto aguarda
 
-        // Simula o carregamento e exibe a mensagem de confirmação
+        // Após 5 segundos, exibe a mensagem de confirmação
         setTimeout(() => {
-            loadingContainer.style.display = "none";
-            confirmationMessage.style.display = "block";
-
-            // Esconde a mensagem de confirmação após 3 segundos
-            setTimeout(() => {
-                confirmationMessage.style.display = "none
+            loadingContainer.style.display = "none"; // Esconde o carregamento
+            confirmationMessage.style.display = "block"; // Exibe a mensagem de confirmação
+        }, 5000); // 5000ms = 5 segundos
+    });
+});
