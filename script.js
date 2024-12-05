@@ -42,6 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Adicionando marcador no mapa para indicar a geloteca
-    const marker = L.marker([-23.405966243073202, -46.388548903872206]).addTo(map);
-    marker.bindPopup("Geloteca SP").openPopup();
+    const marker = L.marker([-23.472741756739797, -46.53087858701123]).addTo(map);
+    marker.bindPopup("Ponto de partida para o futuro!").openPopup();
 });
