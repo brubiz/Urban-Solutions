@@ -1,4 +1,7 @@
 // script.js
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 document.addEventListener("DOMContentLoaded", () => {
     // Inicializando o mapa com Leaflet
     const map = L.map('map').setView([-23.5505, -46.6333], 13); // Coordenadas de São Paulo
