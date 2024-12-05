@@ -29,25 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
         carOption.style.color = "";
     });
 
-    document.getElementById("rideForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const pickup = document.getElementById("pickup").value;
-        const destination = document.getElementById("destination").value;
-
-        if (!pickup || !destination || !selectedVehicle) {
-            alert("Por favor, preencha todos os campos e escolha um tipo de veículo!");
-            return;
-        }
-
-        // Exibe o ícone de carregamento
+    document.getElementById("rideForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+        
         loadingContainer.style.display = "block";
-        confirmationMessage.style.display = "none"; // Esconde a mensagem de confirmação enquanto aguarda
+        confirmationMessage.style.display = "none";
 
-        // Após 5 segundos, exibe a mensagem de confirmação
         setTimeout(() => {
-            loadingContainer.style.display = "none"; // Esconde o carregamento
-            confirmationMessage.style.display = "block"; // Exibe a mensagem de confirmação
-        }, 5000); // 5000ms = 5 segundos
+            loadingContainer.style.display = "none";
+            confirmationMessage.style.display = "block";
+        }, 2000); // Simula o tempo de resposta do servidor
     });
+
+    // Adicionando marcador no mapa para indicar a geloteca
+    const marker = L.marker([-23.405966243073202, -46.388548903872206]).addTo(map);
+    marker.bindPopup("Geloteca SP").openPopup();
 });
