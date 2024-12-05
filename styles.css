@@ -1,4 +1,23 @@
+/* Animação do título */
+.fade-in-title {
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #3b82f6;
+}
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Estilos para o ícone de carregamento */
 .loading-container {
     display: none;  /* Inicialmente escondido */
     text-align: center;
@@ -11,6 +30,58 @@
     margin-top: 20px;
 }
 
+/* Restante do seu código CSS (mantido como está) */
+
+
+/* Overlay de carregamento */
+.loading-container {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3b82f6;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mensagem de confirmação */
+.confirmation-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1c2233;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Estilo geral */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -51,8 +122,6 @@ main {
     overflow: hidden;
     margin-bottom: 20px;
 }
-
-
 
 .ride-options {
     flex: 1;
@@ -120,6 +189,7 @@ button {
 button:hover {
     background-color: #2563eb;
 }
+
 /* From Uiverse.io by fanishah */ 
 .loader {
   width: 8em;
@@ -253,5 +323,3 @@ button:hover {
     stroke-dashoffset: -351.86;
   }
 }
-
-
